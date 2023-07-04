@@ -1,0 +1,95 @@
+h1,h2,h3,h4,h5,h6,p,a{
+    margin: 0px;
+    padding: 0px;
+}
+.header{
+  background-image: url(/background.jpg);
+  padding: 20px!important;
+}
+.img-center{
+  display: block;
+  margin: auto;
+}
+.time-heading{
+  background: #a40808;
+  color: #fff;
+  padding: 10px;
+}
+.time-section{
+  background: #f3e8cd;
+}
+.time-text{
+  padding: 20px 0px;
+}
+.news{
+  background: #fbc02d;
+  padding: 6px 0px;
+}
+.citybtn{
+  padding: 70px 0px;
+}
+.result_heading{
+  padding: 20px 0px!important;
+  color: #a40808;
+  font-weight: bold;
+}
+.footer{
+  background: #fbc02d;
+  padding: 20px 0px;
+}
+.footer_section{
+  background: #7d6016;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  padding: 40px 0px;
+}
+.footer_icon{
+  color: white;
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 28px;
+}
+.rights{
+  text-align: center;
+  color: white;
+  padding: 10px 0px;
+  background: #272727;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+.god-image{
+  display: none;
+}
+.mbg {
+    background: rgba(255, 255, 255, 0.86) !important;
+}
+.time-heading{
+  font-size: 16px;
+}
+
+.time-section-mobile{
+ /* display: none;*/
+}
+
+.time-section{
+  margin: 20px 0px;
+  
+ background: none;
+}
+
+.citybtn{
+  padding: 6px 0px;
+}
+
+table tr th{
+  font-size: 12px;
+}
+.footer_section{
+  margin: 20px;
+}
+}

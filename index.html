@@ -1,0 +1,234 @@
+<html>
+
+<head>
+  <title>Good Luck Satta</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141120275-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-141120275-1');
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js">
+  </script>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="GOOD LUCK SATTA में आपका स्वागत है!! : | !!WELCOME TO GOOD LUCK SATTA!! : The biggest game that is goodlucksatta">
+  <meta name="keyword" content="good luck satta, goodlucksatta, goodluck , satta good luck">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="font-awesome.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <script src="http://goodluckwinplay.com/js/moment-with-locales.min.js"></script>
+</head>
+
+<body>
+
+  <section class="news">
+    <div class="container">
+      <marquee> Gussing number 26 47 92 </marquee>
+    </div>
+  </section>
+  <section class="header">
+    <div class="container">
+      <div class="col-lg-4">
+        <img src="/god.png" class="img-responsive img-center god-image">
+      </div>
+      <div class="col-lg-4">
+        <a href="#"><img src="/logo.gif" class="img-responsive img-center"></a>
+      </div>
+      <div class="col-lg-4">
+        <img src="/god.png" class="img-responsive img-center god-image">
+      </div>
+    </div>
+    <div class="container">
+      <div class="time-section row">
+        <h4 class="time-heading text-center">Open At 10:00 AM and Close At 07:00 PM</h4>
+        <div class="col-md-4 mbg time-section time-text time-section-mobile">
+          <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME<br />
+
+
+
+
+
+
+
+
+
+            07:00 PM
+
+
+
+
+
+
+
+
+
+
+
+          </h4>
+        </div>
+        <div class="col-md-4 mbg time-section time-text time-section-mobile">
+          <h4 class="text-center" style="line-height:1.6;">TODAY DATE<br />
+
+            03-09-2021
+          </h4>
+        </div>
+        <div class="col-md-4 mbg time-section time-text">
+          <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME MAHARASTRA (10:00 AM to 06:00 PM) <br />
+            07:00 PM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </h4>
+        </div>
+      </div>
+
+      <div class="btn_section row">
+        <div class="col-lg-3">
+          <a href="#good-luck"><img src="/mumbai.gif" class="img-responsive citybtn"></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="result">
+    <div class="container">
+      <h3 class="result_heading text-center">Today Results</h3>
+      <div class="table-responsive">
+        <table class="table table-striped" id="good-luck">
+          <tr>
+            <th>Time</th>
+            <th> MUMBAI</th>
+            <th> DELHI</th>
+            <th> SIKKIM</th>
+          </tr>
+          <script>
+            $(document).ready(function () {
+
+              // FETCHING DATA FROM JSON FILE
+              const midurl = "?alt=media&token=";
+              const url = "https://firebasestorage.googleapis.com/v0/b/gls-1224d.appspot.com/o/data.json";
+              $.getJSON(url,
+                function (data0) {
+                  const token = data0.downloadTokens;
+                  $.getJSON(url+ midurl + token,
+                    function (datatime) {
+                      var student = '';
+
+                      // ITERATING THROUGH OBJECTS
+                      $.each(datatime, function (key, value) {
+                        //CONSTRUCTION OF ROWS HAVING
+                        // DATA FROM JSON OBJECT
+                        student += '<tr>';
+                        student += '<td>' +
+                          value.t + '</td>';
+
+                        student += '<td>' +
+                          value.m + '</td>';
+
+                        student += '<td>' +
+                          value.d + '</td>';
+
+                        student += '<td>' +
+                          value.s + '</td>';
+
+                        student += '</tr>';
+                        //INSERTING ROWS INTO TABLE 
+                    
+                      });
+                        $('#good-luck').append(student);
+
+                    });
+
+                });
+            });
+          </script>
+
+        </table>
+      </div>
+      <h3 class="result_heading text-center">Maharastra Result</h3>
+
+      <div class="table-responsive">
+        <table class="table table-striped" id="maharastra">
+          <tr>
+            <th>Lottery Name</th>
+            <th>GOODPLAY MAHARASTRA</th>
+
+          </tr>
+
+
+
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="container">
+      <div class="col-lg-4">
+        <div class="footer_section">
+          <i class="fas fa-dice footer_icon"></i>
+          <a href="#">
+            <h4>History</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer_section">
+          <i class="fas fa-dice footer_icon"></i>
+          <h4>How to Play</h4>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer_section">
+          <i class="fas fa-dice footer_icon"></i>
+          <a href="#">
+            <h4>Reports</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rights">
+    <p class="text-center">© 2021 Good Luck Satta. All Rights Reserved.</p>
+  </section>
+
+
+  <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+      jQuery('.current-time').html(moment().format('LTS'));
+    });
+
+  </script>
+
+</body>
+
+</html>
