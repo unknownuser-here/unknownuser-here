@@ -39,21 +39,23 @@
       display: flex;
       justify-content: center;
     }
-    .odometer.odometer-auto-theme .odometer-digit:last-child, .odometer.odometer-theme-car .odometer-digit:last-child {
-  -moz-border-radius: 0 0.2em 0.2em 0;
-  -webkit-border-radius: 0 0.2em 0.2em 0;
-  -o-border-radius: 0 0.2em 0.2em 0;
-  -ms-border-radius: 0 0.2em 0.2em 0;
-  -khtml-border-radius: 0 0.2em 0.2em 0;
-  border-radius: 0 0.2em 0.2em 0;
-  background-image: -webkit-linear-gradient(top, #fbc02d 0%, #fbc02d 40%, #eeb72b 60%, #fbc02d 80%, #fbc02d 100%);
-  background-image: -moz-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
-  background-image: -o-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
-  background-image: -ms-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
-  background-image: linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
-  background-color: #eee0d3;
-  color: black;
-}
+
+    .odometer.odometer-auto-theme .odometer-digit:last-child,
+    .odometer.odometer-theme-car .odometer-digit:last-child {
+      -moz-border-radius: 0 0.2em 0.2em 0;
+      -webkit-border-radius: 0 0.2em 0.2em 0;
+      -o-border-radius: 0 0.2em 0.2em 0;
+      -ms-border-radius: 0 0.2em 0.2em 0;
+      -khtml-border-radius: 0 0.2em 0.2em 0;
+      border-radius: 0 0.2em 0.2em 0;
+      background-image: -webkit-linear-gradient(top, #fbc02d 0%, #fbc02d 40%, #eeb72b 60%, #fbc02d 80%, #fbc02d 100%);
+      background-image: -moz-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+      background-image: -o-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+      background-image: -ms-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+      background-image: linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+      background-color: #eee0d3;
+      color: black;
+    }
   </style>
 </head>
 
@@ -97,7 +99,20 @@
   </section>
   <section class="result">
     <div class="container">
-      <h3 class="result_heading text-center">04-07-2023 Results</h3>
+      <h3 class="result_heading text-center" id="history-date">
+        <script>
+          const midurl = "?alt=media&token=";
+          const url = "https://firebasestorage.googleapis.com/v0/b/gls-1224d.appspot.com/o/history-date.json";
+          $.getJSON(url,
+            function (data0) {
+              const token = data0.downloadTokens;
+              $.getJSON(url + midurl + token,
+                function (datatime) {
+                  $('#history-date').text(datatime.date+" Result");
+                });
+            });
+        </script>
+      </h3>
       <div class="table-responsive">
         <table class="table table-striped" id="good-luck">
           <tr>

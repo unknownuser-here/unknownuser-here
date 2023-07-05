@@ -63,7 +63,7 @@
     </div>
     <div class="container">
       <div class="time-section row">
-        <h4 class="time-heading text-center">Open At 10:00 AM and Close At 07:00 PM</h4>
+        <h4 class="time-heading text-center">Open At 10:00 AM and Close At 05:00 PM</h4>
         <div>
           <div class="lottery4" style="margin-top: 20px;">
               <h3 id="lottery2" class="my-4 text-4xl">100000</h3>
@@ -112,33 +112,26 @@
           </h4>
         </div>
         <div class="col-md-4 mbg time-section time-text time-section-mobile">
-          <h4 class="text-center" style="line-height:1.6;">TODAY DATE<br />
-
-            03-09-2021
+          <h4 id="today-date" class="text-center" style="line-height:1.6;">TODAY DATE<br />
           </h4>
+          <script>
+            const d = new Date();
+            var date = '';
+            const dayy = d.getDate();
+            let day = dayy.toString().length < 2 ? "0"+dayy : day;
+            const monthh = d.getMonth()+1; 
+            let month = monthh.toString().length < 2 ? "0"+monthh : monthh;
+            date += day;
+            date += "-";
+            date += month;
+            date += "-";
+            date += d.getFullYear();
+            document.getElementById("today-date").innerHTML = date;
+            </script>
         </div>
         <div class="col-md-4 mbg time-section time-text">
-          <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME MAHARASTRA (10:00 AM to 06:00 PM) <br />
-            07:00 PM
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME MAHARASTRA (10:00 AM to 05:00 PM) <br />
+            
           </h4>
         </div>
       </div>
