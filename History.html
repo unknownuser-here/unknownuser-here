@@ -39,6 +39,21 @@
       display: flex;
       justify-content: center;
     }
+    .odometer.odometer-auto-theme .odometer-digit:last-child, .odometer.odometer-theme-car .odometer-digit:last-child {
+  -moz-border-radius: 0 0.2em 0.2em 0;
+  -webkit-border-radius: 0 0.2em 0.2em 0;
+  -o-border-radius: 0 0.2em 0.2em 0;
+  -ms-border-radius: 0 0.2em 0.2em 0;
+  -khtml-border-radius: 0 0.2em 0.2em 0;
+  border-radius: 0 0.2em 0.2em 0;
+  background-image: -webkit-linear-gradient(top, #fbc02d 0%, #fbc02d 40%, #eeb72b 60%, #fbc02d 80%, #fbc02d 100%);
+  background-image: -moz-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+  background-image: -o-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+  background-image: -ms-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+  background-image: linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
+  background-color: #eee0d3;
+  color: black;
+}
   </style>
 </head>
 
@@ -75,7 +90,7 @@
             }, 2500);
           </script>
         </div>
-        <a href="#good-luck"><img src="/mumbai.gif" class="img-responsive citybtn"></a>
+        <a href="/"><img src="/mumbai.gif" class="img-responsive citybtn"></a>
       </div>
     </div>
     </div>
@@ -96,7 +111,7 @@
 
               // FETCHING DATA FROM JSON FILE
               const midurl = "?alt=media&token=";
-              const url = "https://firebasestorage.googleapis.com/v0/b/gls-1224d.appspot.com/o/data.json";
+              const url = "https://firebasestorage.googleapis.com/v0/b/gls-1224d.appspot.com/o/history.json";
               $.getJSON(url,
                 function (data0) {
                   const token = data0.downloadTokens;
