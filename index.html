@@ -36,9 +36,9 @@
   <script src="/livewire-livewire.js" data-turbo-eval="false" data-turbolinks-eval="false"></script>
   <style type="text/css">
     .lottery4 {
-  display: flex;
-  justify-content: center;
-}
+      display: flex;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -66,50 +66,59 @@
         <h4 class="time-heading text-center">Open At 10:00 AM and Close At 05:00 PM</h4>
         <div>
           <div class="lottery4" style="margin-top: 20px;">
-              <h3 id="lottery2" class="my-4 text-4xl">100000</h3>
+            <h3 id="lottery2" class="my-4 text-4xl">100000</h3>
           </div>
           <script>
-              var lcount2 = 0;
-              var lel2 = [];
-              var eod2 = [];
-              lel2[lcount2] = document.getElementById("lottery2");
-              eod2[lcount2] = new Odometer({
-                  el: lel2[lcount2],
-                  value: 100000,
-                  format: 'd',
-                  theme: 'car'
-              });
-              lcount2++;
-              setInterval(function() {
-                  var randomNumber = Math.floor(Math.random() * 30567);
-                  eod2[0].update(randomNumber);
-              }, 2500);
+            var lcount2 = 0;
+            var lel2 = [];
+            var eod2 = [];
+            lel2[lcount2] = document.getElementById("lottery2");
+            eod2[lcount2] = new Odometer({
+              el: lel2[lcount2],
+              value: 100000,
+              format: 'd',
+              theme: 'car'
+            });
+            lcount2++;
+            setInterval(function () {
+              var randomNumber = Math.floor(Math.random() * 30567);
+              eod2[0].update(randomNumber);
+            }, 2500);
           </script>
-      </div>
+        </div>
         <div class="col-md-4 mbg time-section time-text time-section-mobile">
-          <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME<br />
-
-
-
-
-
-
-
-
-
-            07:00 PM
-
-
-
-
-
-
-
-
-
-
-
-          </h4>
+          <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME</h4>
+          <h4 id="nexttime" class="text-center" style="line-height:1.6;"></h4>
+          <script>
+            const nextdate = new Date();
+            var thour = nextdate.getHours();
+            var tminute = nextdate.getMinutes();
+            if (thour < 17 && thour > 9) {
+                var date = '';
+                var ampm = ''
+                if (thour > 11) {
+                  ampm = "PM";
+                  thour -= 12;
+                  if(thour == 0) thour = 12;
+                } else {
+                  ampm = "AM";
+                }
+                if (tminute < 30) {
+                  tminute = 30;
+                } else {
+                  if(thour == 12){
+                    thour = 1;
+                  }else{
+                    thour += 1;
+                  }
+                  tminute = "00";
+                }
+                date += thour.toString() + ":" + tminute.toString() + " " + ampm;
+                document.getElementById("nexttime").innerHTML = date;
+            }else{
+              document.getElementById("nexttime").innerHTML = "10:00 AM";
+            }
+          </script>
         </div>
         <div class="col-md-4 mbg time-section time-text time-section-mobile">
           <h4 id="today-date" class="text-center" style="line-height:1.6;">TODAY DATE<br />
@@ -118,20 +127,20 @@
             const d = new Date();
             var date = '';
             const dayy = d.getDate();
-            let day = dayy.toString().length < 2 ? "0"+dayy : day;
-            const monthh = d.getMonth()+1; 
-            let month = monthh.toString().length < 2 ? "0"+monthh : monthh;
+            let day = dayy.toString().length < 2 ? "0" + dayy : day;
+            const monthh = d.getMonth() + 1;
+            let month = monthh.toString().length < 2 ? "0" + monthh : monthh;
             date += day;
             date += "-";
             date += month;
             date += "-";
             date += d.getFullYear();
             document.getElementById("today-date").innerHTML = date;
-            </script>
+          </script>
         </div>
         <div class="col-md-4 mbg time-section time-text">
           <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME MAHARASTRA (10:00 AM to 05:00 PM) <br />
-            
+
           </h4>
         </div>
       </div>
