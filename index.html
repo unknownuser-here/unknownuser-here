@@ -242,9 +242,57 @@
       <div class="table-responsive">
         <table class="table table-striped" id="maharastra">
           <tr>
-            <th>Lottery Name</th>
-            <th>GOODPLAY MAHARASTRA</th>
-
+            <th>Lottery Date</th>
+            <th>Lottery Time</th>
+            <th>Result</th>
+            <script>
+              $(document).ready(function () {
+  
+                // FETCHING DATA FROM JSON FILE
+                const midurl = "?alt=media&token=";
+                const url = "https://firebasestorage.googleapis.com/v0/b/gls-1224d.appspot.com/o/data2.json";
+                $.getJSON(url,
+                  function (data0) {
+                    const token = data0.downloadTokens;
+                    $.getJSON(url + midurl + token,
+                      function (datatime) {
+                        // var student = '';
+  
+                        var listOfObjectNumber = [];
+                        // ITERATING THROUGH OBJECTS
+                        $.each(datatime, function (key, value) {
+                          //CONSTRUCTION OF ROWS HAVING
+                          // DATA FROM JSON OBJECT
+                          var student = '';
+                          student += '<tr>';
+  
+                          student += '<td>' +
+                            date + '</td>';
+  
+                          student += '<td>' +
+                            value.t + '</td>';
+  
+                          student += '<td>' +
+                            value.m + '</td>';
+  
+                          student += '</tr>';
+                          //INSERTING ROWS INTO TABLE 
+                          listOfObjectNumber[listOfObjectNumber.length] = student;
+  
+                        });
+                        var finalNumber = '';
+                        listOfObjectNumber.reverse();
+                        listOfObjectNumber.forEach(function (thisNumber) {
+                          finalNumber += thisNumber;
+                        });
+  
+                        $('#maharastra').append(finalNumber);
+  
+                      });
+  
+                  });
+              });
+            </script>
           </tr>
 
 
@@ -275,7 +323,7 @@
       <div class="col-lg-4">
         <div class="footer_section">
           <i class="fas fa-dice footer_icon"></i>
-          <a href="#" style="color: white;
+          <a href="/History.html" style="color: white;
           background-color: transparent;
           text-decoration: none;">
             <h4>Reports</h4>
@@ -286,7 +334,7 @@
   </section>
 
   <section class="rights">
-    <p class="text-center">© 2021 Good Luck Satta. All Rights Reserved.</p>
+    <p class="text-center">© 2023 Good Luck Satta. All Rights Reserved.</p>
   </section>
 
 
