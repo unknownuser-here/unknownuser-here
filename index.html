@@ -29,6 +29,17 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
   <script src="http://goodluckwinplay.com/js/moment-with-locales.min.js"></script>
+
+  <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-car.css">
+  <script src="/odometer-odometer.js"></script>
+  <script src="/js-app.js" defer></script>
+  <script src="/livewire-livewire.js" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+  <style type="text/css">
+    .lottery4 {
+  display: flex;
+  justify-content: center;
+}
+  </style>
 </head>
 
 <body>
@@ -53,6 +64,28 @@
     <div class="container">
       <div class="time-section row">
         <h4 class="time-heading text-center">Open At 10:00 AM and Close At 07:00 PM</h4>
+        <div>
+          <div class="lottery4" style="margin-top: 20px;">
+              <h3 id="lottery2" class="my-4 text-4xl">100000</h3>
+          </div>
+          <script>
+              var lcount2 = 0;
+              var lel2 = [];
+              var eod2 = [];
+              lel2[lcount2] = document.getElementById("lottery2");
+              eod2[lcount2] = new Odometer({
+                  el: lel2[lcount2],
+                  value: 100000,
+                  format: 'd',
+                  theme: 'car'
+              });
+              lcount2++;
+              setInterval(function() {
+                  var randomNumber = Math.floor(Math.random() * 30567);
+                  eod2[0].update(randomNumber);
+              }, 2500);
+          </script>
+      </div>
         <div class="col-md-4 mbg time-section time-text time-section-mobile">
           <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME<br />
 
@@ -109,13 +142,33 @@
           </h4>
         </div>
       </div>
-
       <div class="btn_section row">
         <div class="col-lg-3">
+          <div>
+            <div class="lottery4">
+              <h3 id="lottery4">100000</h3>
+            </div>
+            <script>
+              var lcount3 = 0;
+              var lel3 = [];
+              var eod3 = [];
+              lel3[lcount3] = document.getElementById("lottery4");
+              eod3[lcount3] = new Odometer({
+                el: lel3[lcount3],
+                value: 100000,
+                format: 'd',
+                theme: 'car'
+              });
+              lcount3++;
+              setInterval(function () {
+                var randomNumber = Math.floor(Math.random() * 30567);
+                eod3[0].update(randomNumber);
+              }, 2500);
+            </script>
+          </div>
           <a href="#good-luck"><img src="/mumbai.gif" class="img-responsive citybtn"></a>
         </div>
       </div>
-
     </div>
   </section>
   <section class="result">
@@ -138,7 +191,7 @@
               $.getJSON(url,
                 function (data0) {
                   const token = data0.downloadTokens;
-                  $.getJSON(url+ midurl + token,
+                  $.getJSON(url + midurl + token,
                     function (datatime) {
                       // var student = '';
 
@@ -164,15 +217,15 @@
                         student += '</tr>';
                         //INSERTING ROWS INTO TABLE 
                         listOfObjectNumber[listOfObjectNumber.length] = student;
-                    
+
                       });
                       var finalNumber = '';
                       listOfObjectNumber.reverse();
-                      listOfObjectNumber.forEach(function(thisNumber){
+                      listOfObjectNumber.forEach(function (thisNumber) {
                         finalNumber += thisNumber;
                       });
 
-                        $('#good-luck').append(finalNumber);
+                      $('#good-luck').append(finalNumber);
 
                     });
 
@@ -204,7 +257,9 @@
       <div class="col-lg-4">
         <div class="footer_section">
           <i class="fas fa-dice footer_icon"></i>
-          <a href="#">
+          <a href="#" style="color: white;
+          background-color: transparent;
+          text-decoration: none;">
             <h4>History</h4>
           </a>
         </div>
@@ -218,7 +273,9 @@
       <div class="col-lg-4">
         <div class="footer_section">
           <i class="fas fa-dice footer_icon"></i>
-          <a href="#">
+          <a href="#" style="color: white;
+          background-color: transparent;
+          text-decoration: none;">
             <h4>Reports</h4>
           </a>
         </div>
