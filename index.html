@@ -140,12 +140,14 @@
                   const token = data0.downloadTokens;
                   $.getJSON(url+ midurl + token,
                     function (datatime) {
-                      var student = '';
+                      // var student = '';
 
+                      var listOfObjectNumber = [];
                       // ITERATING THROUGH OBJECTS
                       $.each(datatime, function (key, value) {
                         //CONSTRUCTION OF ROWS HAVING
                         // DATA FROM JSON OBJECT
+                        var student = '';
                         student += '<tr>';
                         student += '<td>' +
                           value.t + '</td>';
@@ -161,9 +163,16 @@
 
                         student += '</tr>';
                         //INSERTING ROWS INTO TABLE 
+                        listOfObjectNumber[listOfObjectNumber.length] = student;
                     
                       });
-                        $('#good-luck').append(student);
+                      var finalNumber = '';
+                      listOfObjectNumber.reverse();
+                      listOfObjectNumber.forEach(function(thisNumber){
+                        finalNumber += thisNumber;
+                      });
+
+                        $('#good-luck').append(finalNumber);
 
                     });
 
