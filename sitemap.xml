@@ -1,8 +1,10 @@
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
 <loc>https://goodluckwinplay.in/</loc>
-</sitemap>
-<sitemap>
+<lastmod>2023-07-05</lastmod>
+</url>
+<url>
 <loc>https://goodluckwinplay.in/History.html</loc>
-</sitemap>
-</sitemapindex>
+<lastmod>2023-07-05</lastmod>
+</url>
+</urlset>
