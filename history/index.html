@@ -217,7 +217,14 @@
                 $.getJSON(url + midurl + token,
                   function (datatime) {
                     var listOfObjectNumber = [];
+                    var skip = false;
                     $.each(datatime, function (key, value) {
+                      if (searchDate == todayDate) {
+                        if (skip) return;
+                        if (formatedTime == value.t) {
+                          skip = true;
+                        }
+                      }
                       var student = '';
                       student += '<tr>';
                       student += '<td>' +
@@ -275,6 +282,22 @@
         class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block w-full mt-1"
         id="date_inputm" type="date" name="l_date" value="yyyy-MM-dd" min="1900-01-01" max="2060-12-31">
       <script>
+        const d = new Date();
+        function tConvert(time) {
+          // Check correct time format and split into components
+          time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+          if (time.length > 1) { // If time format correct
+            time = time.slice(1);  // Remove full string match value
+            time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+          }
+          return time.join(''); // return adjusted time or original string
+        }
+        var minutes = d.getMinutes() < 30 ? "00" : "30";
+        var hour = d.getHours();
+
+        const formatedTime = tConvert(hour + ":" + minutes);
         var old_data = "";
         var date_input = document.getElementById('date_inputm');
         date_input.valueAsDate = new Date();
@@ -296,7 +319,14 @@
                 $.getJSON(url + midurl + token,
                   function (datatime) {
                     var listOfObjectNumber = [];
+                    var skip = false;
                     $.each(datatime, function (key, value) {
+                      if (searchDatem == todayDate) {
+                        if (skip) return;
+                        if (formatedTime == value.t) {
+                          skip = true;
+                        }
+                      }
                       var student = '';
                       student += '<tr>';
 

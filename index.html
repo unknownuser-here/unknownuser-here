@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Good Luck Satta</title>
+    <title>Good Luck Satta History</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Google tag (gtag.js) -->
@@ -262,6 +262,22 @@
                         <th> SIKKIM</th>
                     </tr>
                     <script>
+                        function tConvert(time) {
+                            // Check correct time format and split into components
+                            time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+                            if (time.length > 1) { // If time format correct
+                                time = time.slice(1);  // Remove full string match value
+                                time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+                                time[0] = +time[0] % 12 || 12; // Adjust hours
+                            }
+                            return time.join(''); // return adjusted time or original string
+                        }
+                        var minutes = d.getMinutes() < 30 ? "00" : "30";
+                        var hour = d.getHours();
+
+                        const formatedTime = tConvert(hour + ":" + minutes);
+
                         let data_date = d.getFullYear() + "-" + month + "-" + day;
                         $(document).ready(function () {
 
@@ -270,10 +286,17 @@
                             $.getJSON(url,
                                 function (data0) {
                                     const token = data0.downloadTokens;
+                                    var skip = false;
+
                                     $.getJSON(url + midurl + token,
                                         function (datatime) {
                                             var listOfObjectNumber = [];
                                             $.each(datatime, function (key, value) {
+
+                                                if (skip) return;
+                                                if (formatedTime == value.t) {
+                                                    skip = true;
+                                                }
                                                 var student = '';
                                                 student += '<tr>';
                                                 student += '<td>' +
@@ -290,7 +313,6 @@
 
                                                 student += '</tr>';
                                                 listOfObjectNumber[listOfObjectNumber.length] = student;
-
                                             });
                                             var finalNumber = '';
                                             listOfObjectNumber.reverse();
@@ -328,7 +350,12 @@
                                     $.getJSON(url + midurl + token,
                                         function (datatime) {
                                             var listOfObjectNumber = [];
+                                            var skip = false;
                                             $.each(datatime, function (key, value) {
+                                                if (skip) return;
+                                                if (formatedTime == value.t) {
+                                                    skip = true;
+                                                }
                                                 var student = '';
                                                 student += '<tr>';
 
