@@ -296,8 +296,11 @@
         }
         var minutes = d.getMinutes() < 30 ? "00" : "30";
         var hour = d.getHours();
+        
+        const rowformatedTime = tConvert(hour + ":" + minutes)
 
-        const formatedTime = tConvert(hour + ":" + minutes);
+        const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0" + rowformatedTime
+
         var old_data = "";
         var date_input = document.getElementById('date_inputm');
         date_input.valueAsDate = new Date();
