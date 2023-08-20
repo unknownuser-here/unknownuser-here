@@ -219,6 +219,9 @@
                     var listOfObjectNumber = [];
                     var skip = false;
                     $.each(datatime, function (key, value) {
+                      if (d.getHours() < 10) {
+                          skip = true;
+                        }
                       if (searchDate == todayDate) {
                         if (skip) return;
                         if (formatedTime == value.t) {
@@ -324,8 +327,12 @@
                     var listOfObjectNumber = [];
                     var skip = false;
                     $.each(datatime, function (key, value) {
+                      if (d.getHours() < 10) {
+                          skip = true;
+                        }
                       if (searchDatem == todayDate) {
                         if (skip) return;
+                        
                         if (formatedTime == value.t) {
                           skip = true;
                         }
