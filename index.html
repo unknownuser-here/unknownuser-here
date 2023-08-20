@@ -274,12 +274,12 @@
                             return time.join(''); // return adjusted time or original string
                         }
                         var minutes = d.getMinutes() < 30 ? "00" : "30";
-                        var hour = d.getHours();
+                        var hour = (d.getHours() < 10 ? '0' : '')+d.getHours();
+                        
 
                         const rowformatedTime = tConvert(hour + ":" + minutes)
                         
                         const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0"+rowformatedTime
-                    
                         let data_date = d.getFullYear() + "-" + month + "-" + day;
                         $(document).ready(function () {
 
