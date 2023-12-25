@@ -218,10 +218,30 @@
                   function (datatime) {
                     var listOfObjectNumber = [];
                     var skip = false;
+                    let fullSkip = false
+                    const cd = parseInt(searchDate.slice(8,10))
+                    const cm = parseInt(searchDate.slice(5,7))
+                    const cy = parseInt(searchDate.slice(0, 4))
+                    const td = parseInt(todayDate.slice(8,10))
+                    const tm = parseInt(todayDate.slice(5,7))
+                    const ty = parseInt(todayDate.slice(0,4))
+                    if (ty < cy) {
+                      showPageSecond = true;
+                      skfullSkipip = true
+                    } else if (tm < cm) {
+                      showPageSecond = true;
+                      fullSkip = true
+                    } else if (td < cd) {
+                      showPageSecond = true;
+                      fullSkip = true
+                    }
                     $.each(datatime, function (key, value) {
+                      if (fullSkip) {
+                        return
+                      }
                       if (d.getHours() < 10) {
-                          skip = true;
-                        }
+                        skip = true;
+                      }
                       if (searchDate == todayDate) {
                         if (skip) return;
                         if (formatedTime == value.t) {
@@ -298,8 +318,8 @@
           return time.join(''); // return adjusted time or original string
         }
         var minutes = d.getMinutes() < 30 ? "00" : "30";
-        var hour = (d.getHours() < 10 ? '0' : '')+d.getHours();
-        
+        var hour = (d.getHours() < 10 ? '0' : '') + d.getHours();
+
         const rowformatedTime = tConvert(hour + ":" + minutes)
 
         const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0" + rowformatedTime
@@ -326,13 +346,33 @@
                   function (datatime) {
                     var listOfObjectNumber = [];
                     var skip = false;
+                    let fullSkip = false
+                    const cd = parseInt(searchDatem.slice(8,10))
+                    const cm = parseInt(searchDatem.slice(5,7))
+                    const cy = parseInt(searchDatem.slice(0, 4))
+                    const td = parseInt(todayDate.slice(8,10))
+                    const tm = parseInt(todayDate.slice(5,7))
+                    const ty = parseInt(todayDate.slice(0,4))
+                    if (ty < cy) {
+                      showPageSecond = true;
+                      skfullSkipip = true
+                    } else if (tm < cm) {
+                      showPageSecond = true;
+                      fullSkip = true
+                    } else if (td < cd) {
+                      showPageSecond = true;
+                      fullSkip = true
+                    }
                     $.each(datatime, function (key, value) {
+                      if (fullSkip) {
+                        return
+                      }
                       if (d.getHours() < 10) {
-                          skip = true;
-                        }
+                        skip = true;
+                      }
                       if (searchDatem == todayDate) {
                         if (skip) return;
-                        
+
                         if (formatedTime == value.t) {
                           skip = true;
                         }
