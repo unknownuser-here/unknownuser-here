@@ -203,6 +203,12 @@
           let day = format_date.substring(6, 8);
           return day + "-" + mon + "-" + yea;
         }
+        function isFutureDate(dateString) {
+            const [day, month, year] = dateString.split('-').map(Number);
+            const inputDate = new Date(year, month - 1, day); // Month is 0-indexed in Date constructor
+            const currentDate = new Date();
+            return inputDate > currentDate;
+        }
         function loadMainTable(searchDate, resultDate) {
           const first_td = '<table class="table table-striped" id="good-luck"><tr><th>Time</th><th> MUMBAI</th><th> DELHI</th><th> SIKKIM</th></tr>';
           const end_td = "</table>"
@@ -219,20 +225,9 @@
                     var listOfObjectNumber = [];
                     var skip = false;
                     let fullSkip = false
-                    const cd = parseInt(searchDate.slice(8,10))
-                    const cm = parseInt(searchDate.slice(5,7))
-                    const cy = parseInt(searchDate.slice(0, 4))
-                    const td = parseInt(todayDate.slice(8,10))
-                    const tm = parseInt(todayDate.slice(5,7))
-                    const ty = parseInt(todayDate.slice(0,4))
-                    if (ty < cy) {
-                      showPageSecond = true;
-                      skfullSkipip = true
-                    } else if (tm < cm) {
-                      showPageSecond = true;
-                      fullSkip = true
-                    } else if (td < cd) {
-                      showPageSecond = true;
+                  
+                    if (isFutureDate(searchDate)) {
+                        showPageSecond = true;
                       fullSkip = true
                     }
                     $.each(datatime, function (key, value) {
@@ -347,19 +342,8 @@
                     var listOfObjectNumber = [];
                     var skip = false;
                     let fullSkip = false
-                    const cd = parseInt(searchDatem.slice(8,10))
-                    const cm = parseInt(searchDatem.slice(5,7))
-                    const cy = parseInt(searchDatem.slice(0, 4))
-                    const td = parseInt(todayDate.slice(8,10))
-                    const tm = parseInt(todayDate.slice(5,7))
-                    const ty = parseInt(todayDate.slice(0,4))
-                    if (ty < cy) {
-                      showPageSecond = true;
-                      skfullSkipip = true
-                    } else if (tm < cm) {
-                      showPageSecond = true;
-                      fullSkip = true
-                    } else if (td < cd) {
+                  
+                    if (isFutureDate(searchDatem)) {
                       showPageSecond = true;
                       fullSkip = true
                     }
