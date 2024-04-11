@@ -185,11 +185,55 @@
       <input
         class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block w-full mt-1"
         id="date_input" type="date" name="l_date" value="yyyy-MM-dd" min="1900-01-01" max="2060-12-31">
-      <script>
-        var old_data = "";
-        var date_input = document.getElementById('date_input');
-        date_input.valueAsDate = new Date();
+      <h3 class="result_heading text-center" id="history-date" style="margin-top: 10px;">
+      </h3>
+      <div class="table-responsive">
+        <table class="table table-striped" id="good-luck">
+          <tr>
+            <th>Time</th>
+            <th> MUMBAI</th>
+            <th> DELHI</th>
+            <th> SIKKIM</th>
+          </tr>
 
+        </table>
+      </div>
+      <input
+        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block w-full mt-1"
+        id="date_inputm" type="date" name="l_date" value="yyyy-MM-dd" min="1900-01-01" max="2060-12-31">
+      <script>
+        var date_input = document.getElementById('date_input');
+        const d = new Date();
+        date_input.valueAsDate = d;
+        function tConvert(time) {
+          time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+          if (time.length > 1) {
+            time = time.slice(1);
+            time[5] = +time[0] < 12 ? ' AM' : ' PM';
+            time[0] = +time[0] % 12 || 12;
+          }
+          return time.join('');
+        }
+        var minutes = d.getMinutes() < 30 ? "00" : "30";
+        var minutesForM = d.getMinutes();
+        if (minutesForM < 20) {
+          minutesForM = "00"
+        } else {
+          if (minutesForM < 40) {
+            minutesForM = "20"
+          } else {
+            minutesForM = "40"
+          }
+        }
+        var hour = (d.getHours() < 10 ? '0' : '') + d.getHours();
+
+
+        const rowformatedTime = tConvert(hour + ":" + minutes);
+        const rowformatedTimeForM = tConvert(hour + ":" + minutesForM);
+
+        const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0" + rowformatedTime;
+        const formatedTimeForM = rowformatedTimeForM.substring(2, 3) == ':' ? rowformatedTimeForM : "0" + rowformatedTimeForM;
 
         date_input.onchange = function () {
           let now_date = this.value;
@@ -204,14 +248,20 @@
           return day + "-" + mon + "-" + yea;
         }
         function isFutureDate(dateString) {
-            const [day, month, year] = dateString.split('-').map(Number);
-            const inputDate = new Date(year, month - 1, day); // Month is 0-indexed in Date constructor
-            const currentDate = new Date();
-            return inputDate > currentDate;
+          const [day, month, year] = dateString.split('-').map(Number);
+          const inputDate = new Date(year, month - 1, day); // Month is 0-indexed in Date constructor
+          const currentDate = new Date();
+          return inputDate > currentDate;
         }
         function loadMainTable(searchDate, resultDate) {
           const first_td = '<table class="table table-striped" id="good-luck"><tr><th>Time</th><th> MUMBAI</th><th> DELHI</th><th> SIKKIM</th></tr>';
           const end_td = "</table>"
+          if (isFutureDate(getPrintableDate(searchDate))) {
+            showPageSecond = true;
+            $('#good-luck').replaceWith(first_td + end_td);
+            $('#history-date').text(resultDate + " Result");
+            return
+          }
 
           $('#history-date').text("__-" + "__-____" + " Result");
           $(document).ready(function () {
@@ -225,11 +275,6 @@
                     var listOfObjectNumber = [];
                     var skip = false;
                     let fullSkip = false
-                  
-                    if (isFutureDate(searchDate)) {
-                        showPageSecond = true;
-                      fullSkip = true
-                    }
                     $.each(datatime, function (key, value) {
                       if (fullSkip) {
                         return
@@ -279,47 +324,6 @@
           });
         }
 
-      </script>
-      <h3 class="result_heading text-center" id="history-date" style="margin-top: 10px;">
-      </h3>
-      <div class="table-responsive">
-        <table class="table table-striped" id="good-luck">
-          <tr>
-            <th>Time</th>
-            <th> MUMBAI</th>
-            <th> DELHI</th>
-            <th> SIKKIM</th>
-          </tr>
-          <!-- <script> -->
-
-          <!-- </script> -->
-
-        </table>
-      </div>
-      <input
-        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block w-full mt-1"
-        id="date_inputm" type="date" name="l_date" value="yyyy-MM-dd" min="1900-01-01" max="2060-12-31">
-      <script>
-        const d = new Date();
-        function tConvert(time) {
-          // Check correct time format and split into components
-          time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-
-          if (time.length > 1) { // If time format correct
-            time = time.slice(1);  // Remove full string match value
-            time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
-            time[0] = +time[0] % 12 || 12; // Adjust hours
-          }
-          return time.join(''); // return adjusted time or original string
-        }
-        var minutes = d.getMinutes() < 30 ? "00" : "30";
-        var hour = (d.getHours() < 10 ? '0' : '') + d.getHours();
-
-        const rowformatedTime = tConvert(hour + ":" + minutes)
-
-        const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0" + rowformatedTime
-
-        var old_data = "";
         var date_input = document.getElementById('date_inputm');
         date_input.valueAsDate = new Date();
 
@@ -331,6 +335,11 @@
         function loadMaharastraTable(searchDatem, resultDatem) {
           const first_tdm = '<table class="table table-striped" id="maharastra"><tr><th>Lottery Date</th><th>Lottery Time</th><th>Result</th></tr>';
           const end_tdm = "</table>"
+          if (isFutureDate(getPrintableDate(searchDatem))) {
+            showPageSecond = true;
+            $('#maharastra').replaceWith(first_tdm + end_tdm);
+            return
+          }
           $(document).ready(function () {
             const midurl = "?alt=media&token=";
             const url = "https://firebasestorage.googleapis.com/v0/b/gls-1224d.appspot.com/o/m" + searchDatem + ".json";
@@ -341,23 +350,14 @@
                   function (datatime) {
                     var listOfObjectNumber = [];
                     var skip = false;
-                    let fullSkip = false
-                  
-                    if (isFutureDate(searchDatem)) {
-                      showPageSecond = true;
-                      fullSkip = true
-                    }
                     $.each(datatime, function (key, value) {
-                      if (fullSkip) {
-                        return
-                      }
                       if (d.getHours() < 10) {
                         skip = true;
                       }
                       if (searchDatem == todayDate) {
                         if (skip) return;
 
-                        if (formatedTime == value.t) {
+                        if (formatedTimeForM == value.t) {
                           skip = true;
                         }
                       }

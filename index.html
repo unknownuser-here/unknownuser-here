@@ -6,7 +6,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-40BFK47KXJ"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-40BFK47KXJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -17,9 +17,9 @@
         gtag('js', new Date());
 
         gtag('config', 'G-40BFK47KXJ');
-    </script>
+    </script> -->
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
+    <!-- <script>(function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start':
@@ -31,9 +31,9 @@
             j.src =
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-TSPLL9W');</script>
+        })(window, document, 'script', 'dataLayer', 'GTM-TSPLL9W');</script> -->
     <!-- End Google Tag Manager -->
-    <script>
+    <!-- <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -42,7 +42,7 @@
 
         gtag('js', new Date());
         gtag('config', 'UA-141120275-1');
-    </script>
+    </script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.js">
     </script>
 
@@ -72,7 +72,7 @@
     <link rel="mask-icon" href="goodlucksatta/image/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#b91d47">
     <meta name="theme-color" content="#ffffff">
-    <script src="https://goodluckwinplay.in/goodlucksatta/js/odometer-odometer.js"></script>
+    <script src="goodlucksatta/js/odometer-odometer.js"></script>
     <style type="text/css">
         .lottery4 {
             display: flex;
@@ -139,7 +139,7 @@
         </div>
         <div class="container">
             <div class="time-section row">
-                <h4 class="time-heading text-center">Open At 10:00 AM and Close At 05:00 PM</h4>
+                <h4 class="time-heading text-center">Open At 10:00 AM and Close At 07:00 PM</h4>
                 <div>
                     <div class="lottery4" style="margin-top: 20px;">
                         <h3 id="lottery2" class="my-4 text-4xl">10000</h3>
@@ -214,7 +214,7 @@
                     </script>
                 </div>
                 <div class="col-md-4 mbg time-section time-text">
-                    <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME MAHARASTRA (10:00 AM to 05:00 PM)
+                    <h4 class="text-center" style="line-height:1.6;">NEXT DRAW TIME MAHARASTRA (10:00 AM to 07:00 PM)
                         <br />
 
                     </h4>
@@ -263,23 +263,35 @@
                     </tr>
                     <script>
                         function tConvert(time) {
-                            // Check correct time format and split into components
                             time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
 
-                            if (time.length > 1) { // If time format correct
-                                time = time.slice(1);  // Remove full string match value
-                                time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
-                                time[0] = +time[0] % 12 || 12; // Adjust hours
+                            if (time.length > 1) {
+                                time = time.slice(1);
+                                time[5] = +time[0] < 12 ? ' AM' : ' PM';
+                                time[0] = +time[0] % 12 || 12;
                             }
-                            return time.join(''); // return adjusted time or original string
+                            return time.join('');
                         }
                         var minutes = d.getMinutes() < 30 ? "00" : "30";
+                        var minutesForM = d.getMinutes();
+                        if (minutesForM < 20) {
+                            minutesForM = "00"
+                        } else {
+                            if (minutesForM < 40) {
+                                minutesForM = "20"
+                            } else {
+                                minutesForM = "40"
+                            }
+                        }
                         var hour = (d.getHours() < 10 ? '0' : '') + d.getHours();
 
 
-                        const rowformatedTime = tConvert(hour + ":" + minutes)
+                        const rowformatedTime = tConvert(hour + ":" + minutes);
+                        const rowformatedTimeForM = tConvert(hour + ":" + minutesForM);
 
-                        const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0" + rowformatedTime
+                        const formatedTime = rowformatedTime.substring(2, 3) == ':' ? rowformatedTime : "0" + rowformatedTime;
+                        const formatedTimeForM = rowformatedTimeForM.substring(2, 3) == ':' ? rowformatedTimeForM : "0" + rowformatedTimeForM;
+                        console.log(formatedTimeForM);
                         let data_date = d.getFullYear() + "-" + month + "-" + day;
                         $(document).ready(function () {
 
@@ -360,7 +372,7 @@
                                                     skip = true;
                                                 }
                                                 if (skip) return;
-                                                if (formatedTime == value.t) {
+                                                if (formatedTimeForM == value.t) {
                                                     skip = true;
                                                 }
                                                 var student = '';
